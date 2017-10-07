@@ -1,0 +1,12 @@
+.tweet-list {
+  border: 10px solid;
+}
+
+.tweet-list > div:not(:last-child) {
+  border-bottom: 2px dashed;
+}
+
+.caret {
+  left: -2em;
+  position: relative;
+}

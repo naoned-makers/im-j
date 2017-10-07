@@ -1,0 +1,37 @@
+@font-face {
+  font-family:'Agency FB';
+  src: url('agency-fb.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #212121;
+  color: rgba(109, 204, 221, 1);
+  min-height: 100vh;
+}
+
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+  font-family: 'Agency FB Normal', 'Agency FB';
+}
+
+div {
+  border-color: rgba(109, 204, 221, 1);
+}
+
+section > header {
+  font-size: 1.5em;
+}
+
+.right-align {
+  text-align: right;
+}
+
+svg path {
+  fill: rgba(109, 204, 221, 1);
+}

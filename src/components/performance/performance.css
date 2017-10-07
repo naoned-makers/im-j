@@ -1,0 +1,19 @@
+.title-left-align {
+  font-size: 1.5em;
+}
+
+.gauge {
+  height: 15px;
+  min-width: 0;
+  background-color: rgba(109, 204, 221, 0.2);
+  margin: auto;
+}
+
+.value {
+  background-color: rgba(109, 204, 221, 1);
+  height: 15px;
+}
+
+.container > * {
+  margin-top: 0.5em;
+}

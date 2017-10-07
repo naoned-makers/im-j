@@ -1,0 +1,49 @@
+.event-title {
+  top: 1.75em;
+  position: relative;
+}
+
+.event-title-underline-1 {
+  background-color: rgba(109, 204, 221, 1);
+  position: relative;
+  height: 1px;
+  bottom: -3em;
+}
+
+.event-title-underline-2 {
+  background-color: rgba(109, 204, 221, 1);
+  position: relative;
+  left: -3em;
+  height: 1px;
+  bottom: -2.1em;
+}
+
+.event-title-underline-3 {
+  background-color: rgba(109, 204, 221, 1);
+  position: relative;
+  height: 1px;
+  bottom: -0.9em;
+  right: 10px;
+}
+
+.event-border {
+  border: 10px solid;
+}
+
+.event-border > div:not(:last-child) {
+  border-bottom: 2px dashed;
+}
+
+.event-detail-panel {
+  padding: 0.8em 0.8em 0em 0.8em;
+}
+
+.event-caret {
+  left: -2em;
+  position: relative;
+}
+
+.event-location {
+  font-size: 0.9em;
+  padding: 0.5em 0.8em;
+}
