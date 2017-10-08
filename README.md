@@ -20,6 +20,4 @@ Launch build task for production with the following command :
 ```sh
 npm run build
 ```
-
-Cette instruction lance en parallèle la construction du serveur et du client, et met à disposition les bundles générés dans le répertoire `/dist`.
 Generated bundles are stored in the `/dist` directory.
