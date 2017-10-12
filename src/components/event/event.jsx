@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 
 const Event = ({ store }) => (
   <section>
@@ -15,11 +16,11 @@ const Event = ({ store }) => (
           <div className='title pure-u-11-24'>{store.title}</div>
           <div className='pure-u-12-24 right-align'>{store.schedule}</div>
         </div>
-        <p className='description pure-u-1'>{store.description}</p>
+        <p className='description pure-u-1'>{store.speakers}</p>
       </div>
       <div className='pure-u-1 event-location right-align'>{store.location}</div>
     </div>
   </section>
 );
 
-export default Event;
+export default observer(Event);

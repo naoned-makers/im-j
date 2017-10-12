@@ -92,6 +92,20 @@ const client = {
         collapseWhitespace: true
       }
     }),
+    new HtmlWebpackPlugin({
+      title: 'Parlez à Jarvis !',
+      template: path.resolve(PATHS.app, 'speaktojarvis.html'),
+      favicon: path.resolve(PATHS.app, 'favicon.ico'),
+      minify: {
+        minifyCSS: true,
+        minifyJS: true,
+        removeComments: true,
+        collapseInlineTagWhitespace: true,
+        collapseWhitespace: true
+      }
+    }),
+    
+
     new webpack.DefinePlugin(initialVariableObject),
     new ExtractTextPlugin('[name].[contenthash].css'),
     new BabelMinifyPlugin(),
