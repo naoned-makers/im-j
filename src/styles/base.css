@@ -10,8 +10,8 @@
 }
 
 body {
-  background-color: #212121;
-  color: rgba(109, 204, 221, 1);
+  background-color: rgba(33, 33, 33, 1);
+  color: rgba(2, 255, 255, 1);
   min-height: 100vh;
 }
 
@@ -21,7 +21,7 @@ html, button, input, select, textarea,
 }
 
 div {
-  border-color: rgba(109, 204, 221, 1);
+  border-color: rgba(2, 255, 255, 1);
 }
 
 section > header {
@@ -33,5 +33,5 @@ section > header {
 }
 
 svg path {
-  fill: rgba(109, 204, 221, 1);
+  fill: rgba(2, 255, 255, 1);
 }

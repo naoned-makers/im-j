@@ -1,17 +1,19 @@
 import React from 'react';
+import { observer } from 'mobx-react';
+import { observable, autorun, computed, action } from 'mobx';
 import 'font-awesome/css/font-awesome.css';
 
-const Tweet = () => (
-  <div className='pure-g' style={{ padding: '0.8em' }}>
+const Tweet = ({ tweet }) => (
+  <div style={{ padding: '0.8rem' }}>
     <div className='pure-u-1'>
-      <div className='pure-u-1-24 caret'><i className='fa fa-caret-right'></i></div>
-      <div className='name pure-u-6-24'>John Doe</div>
-      <div className='screen-name pure-u-5-24'>@johndoe</div>
-      <div className='time-since-creation pure-u-12-24' style={{ textAlign: 'right' }}>17 m</div>
+      <div className=' pure-u-4-5' style={{ fontSize: '1.5rem' }}>
+        <i className='fa fa-caret-right' style={{ fontSize: '1.5rem', marginLeft: '-2.5rem', paddingRight: '2rem' }}></i>
+        {tweet.displayName}
+      </div>
+      <div className='time-since-creation pure-u-1-5' style={{ textAlign: 'right' }}>{tweet.timeSinceCreation}</div>
     </div>
-    <p className='text pure-u-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto</p>
+    <p className='text pure-u-1' style={{ marginBottom: '0.5rem' }}>{tweet.text}</p>
   </div>
-
 );
 
-export default Tweet;
+export default observer(Tweet);

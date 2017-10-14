@@ -1,12 +1,18 @@
 .tweet-list {
-  border: 10px solid;
+  border: 0.5rem solid;
 }
 
 .tweet-list > div:not(:last-child) {
-  border-bottom: 2px dashed;
+  border-bottom: 0.1rem dashed;
 }
 
 .caret {
-  left: -2em;
+  left: -2.5rem;
   position: relative;
+}
+
+.tweet-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
