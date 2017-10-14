@@ -1,16 +1,29 @@
 g:active > path.glow {
-  fill: '#DAF0F6';
+  fill: rgba(218, 240, 246, 1);
   filter: url(#blur-filter);
 }
 
 .fill-dark {
-  fill: #212121;
+  fill: rgba(33, 33, 33, 1);
 }
 
 .fill-light {
-  fill: #6ECCDD;
+  fill: rgba(2, 255, 255, 1);
 }
 
 .fill-lighter{
-  fill: #DAF0F6;
+  fill: rgba(218, 240, 246, 1);
+}
+
+.fill-moving {
+  fill: rgba(218, 240, 246, 1);
+  filter: url(#blur-filter);
+}
+
+.fill-red {
+  fill: #B71C1C;
+}
+
+.fill-yellow {
+  fill: #FFD600;
 }

@@ -1,21 +1,22 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import Tweet from './tweet.item';
 
-const TweetList = () => (
-  <section>
+const TweetList = ({ store }) => (
+  <section style={{ paddingLeft: '9rem' }}>
     <header className='right-align'>Latest Tweets</header>
-    <div className='pure-u-1' style={{ backgroundColor: 'rgba(109, 204, 221, 1)', position: 'relative', height: '1px', bottom: '-0.5em' }}>
+    <div className='pure-u-1' style={{ height: '1px', marginTop: '0.5rem', backgroundColor: 'rgba(2, 255, 255, 1)' }}>
     </div>
-    <div className='pure-u-1' style={{ backgroundColor: 'rgba(109, 204, 221, 1)', position: 'relative', left: '-3em', height: '1px', bottom: '0.4em' }}>
+    <div className='pure-u-1' style={{ height: '1px', marginTop: '-0.4rem', marginLeft: '-6rem', backgroundColor: 'rgba(2, 255, 255, 1)' }}>
     </div>
-    <div className='pure-u-1' style={{ backgroundColor: 'rgba(109, 204, 221, 1)', position: 'relative', height: '1px', bottom: '1.6em', right: '10px' }}>
+    <div className='pure-u-1' style={{ height: '1px', marginTop: '-1.6rem', marginLeft: '-0.5rem', backgroundColor: 'rgba(2, 255, 255, 1)' }}>
     </div>
-    <div className='pure-u-1 tweet-list' style={{ top: '-2.5em', position: 'relative' }}>
-      <Tweet />
-      <Tweet />
-      <Tweet />
+    <div className='pure-u-1 tweet-list' style={{ marginTop: '-2.5rem' }}>
+      {store.map((tweet, index) => {
+        return <Tweet key={index} tweet={tweet} />
+      })}
     </div>
   </section>
 );
 
-export default TweetList;
+export default observer(TweetList);

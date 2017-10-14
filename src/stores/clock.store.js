@@ -2,7 +2,7 @@ import { observable, action } from 'mobx';
 import moment from 'moment';
 import { capitalize } from '../utils/string.utils';
 
-moment.locale('fr');
+moment.locale('en');
 
 setInterval(() => {
   const d = moment();

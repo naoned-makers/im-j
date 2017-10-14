@@ -12,7 +12,9 @@ const getWeather = async () => {
     }
     return {
       temperature: JSON.parse(localStorage.getItem('weather.data')).main.temp,
-      conditionId: JSON.parse(localStorage.getItem('weather.data')).weather[0].icon
+      conditionId: JSON.parse(localStorage.getItem('weather.data')).weather[0].icon,
+      pressure: JSON.parse(localStorage.getItem('weather.data')).main.pressure,
+      humidity: JSON.parse(localStorage.getItem('weather.data')).main.humidity
     }
   } catch (error) {
     throw error;
