@@ -1,8 +1,16 @@
 import { observable } from 'mobx';
+import { stream } from '../services/twitter.service';
 
 const switchDisplayName = (tweet) => {
   tweet.displayName = tweet.displayName === tweet.name ? tweet.screenName : tweet.name;
 }
+
+stream((data) => {
+  console.log(data);
+  const tweet = { ...data, displayName: data.name };
+  twitterStore.unshift(tweet);
+  twitterStore.pop();
+});
 
 const twitterStore = observable([{
   displayName: 'John Doe',
