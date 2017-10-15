@@ -1,5 +1,8 @@
 import { observable } from 'mobx';
-import { stream } from '../services/twitter.service';
+import { message } from '../services/twitter.service';
+
+
+
 
 const switchDisplayName = (tweet) => {
   tweet.displayName = tweet.displayName === tweet.name ? tweet.screenName : tweet.name;
