@@ -1,6 +1,42 @@
 import { capitalize } from '../utils/string.utils';
+import mqtt from 'async-mqtt';
 
-const letters = 'abcdefghijklmnopqrstuvwxyz';
+let client = mqtt.connect('ws://192.168.1.119:3000', { clientId: 'twitter_'+Math.random().toString(16).substr(2, 8)})
+
+client.on("connect", connection);
+client.on("message", message);
+
+async function connection() {
+  
+    console.log("connexion au broker");
+    try {
+      await client.subscribe('im/command/twitter');
+    } catch (e){
+      console.log(e.stack);
+      process.exit();
+    }
+}
+
+async function message(topic, strPayLoad) {
+  
+    console.log("réception d'un message");
+    try {
+      console.log(topic);
+      let response = JSON.parse(strPayLoad);
+      return {
+        user_name: response.user_name,
+        screen_name: response.screen_name,
+        text: response.text
+      }
+    } catch (e){
+      console.log(e.stack);
+      process.exit();
+    }
+}
+
+
+
+/*const letters = 'abcdefghijklmnopqrstuvwxyz';
 const numbers = '0123456789';
 
 const stringGen = (len, charset) => {
@@ -28,6 +64,6 @@ const generateTweet = () => ({
 
 const stream = (handleData) => {
   setInterval(() => handleData(generateTweet()), 12000);
-};
+};*/
 
-export { stream };
+export { message };
