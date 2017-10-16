@@ -1,31 +1,17 @@
 import { observable, action } from 'mobx';
+import { client } from '../services/performance.service';
 
-let battery;
-
-if ("getBattery" in navigator) {
-  navigator.getBattery().then((batteryManager) => {
-    battery = batteryManager;
-    battery.addEventListener('levelchange', updateLoadLevel);
-
-    console.log(`Current Battery Level: ${battery.level}`);
-
-    performanceStore.loadRate = battery.level;
-  });
-} else {
-  battery = navigator.battery || navigator.mozBattery || navigator.webkitBattery;
-  battery.addEventListener('levelchange', updateLoadLevel);
-  performanceStore.loadRate = battery.level;
-}
-
-const updateLoadLevel = (battery) => {
-  console.log(`New Battery Level: ${battery.target.level}`);
-  performanceStore.loadRate = battery.target.level;
-}
+client.on('message', (topic, payload) => {
+  const data = JSON.parse(payload);
+  performanceStore.cpuRate = Number.parseFloat(data.cpuUsage) / 100;
+  performanceStore.loadRate = (Number.parseInt(data.disk.total) - Number.parseInt(data.disk.free)) / Number.parseInt(data.disk.total);
+  performanceStore.memoryRate = Number.parseFloat(data.memory.percentage) / 100;
+});
 
 const performanceStore = observable({
-  cpuRate: 0.75,
+  cpuRate: 0,
   loadRate: 0,
-  memoryRate: 0.25
+  memoryRate: 0
 });
 
 export default performanceStore;
