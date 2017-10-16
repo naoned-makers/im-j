@@ -30,11 +30,6 @@
   padding: 0.8rem 0.8rem 0rem 0.8rem;
 }
 
-.event-caret {
-  left: -2.5rem;
-  position: relative;
-}
-
 .event-location {
   font-size: 0.9rem;
   padding: 0.5rem 0.8rem;
