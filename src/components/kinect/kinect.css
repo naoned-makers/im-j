@@ -1,5 +1,7 @@
 #kinect_frame {
-    border : 0;
-    width: 25em;
-    height: 18em;
+    width: 500px;
+    height: 375px;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
