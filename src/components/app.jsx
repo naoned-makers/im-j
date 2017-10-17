@@ -5,6 +5,7 @@ import { TweetList } from './twitter';
 import { Event } from './event';
 import { Body } from './figure';
 import { Weather } from './weather';
+import { Kinect } from './kinect';
 import { observer } from 'mobx-react';
 import performanceStore from '../stores/performance.store';
 import clockStore from '../stores/clock.store';
@@ -20,6 +21,7 @@ const App = () => (
       <Clock store={clockStore} />
       <Weather store={weatherStore} />
       <div className='layout-auto-fill'></div>
+      <Kinect />
       <Performance store={performanceStore} />
     </div>
     <div className='pure-u-1 pure-u-xl-8-24'>
