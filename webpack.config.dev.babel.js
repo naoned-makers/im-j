@@ -52,7 +52,7 @@ export default {
     inline: true,
     stats: 'errors-only',
     host: 'localhost',
-    port: 3000,
+    port: 3030,
     proxy: {
       '/': {
         target: 'http://localhost:5000/',
