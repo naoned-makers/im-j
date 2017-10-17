@@ -1,5 +1,5 @@
 import mqtt from 'mqtt';
 
-const getMqttClient = (clientId) => mqtt.connect('ws://192.168.1.119:3000', { clientId });
+const getMqttClient = (clientId) => mqtt.connect(`ws://${process.env.MQTT_HOST}:${process.env.MQTT_PORT}`, { clientId });
 
 export { getMqttClient };

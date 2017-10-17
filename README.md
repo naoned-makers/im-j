@@ -1,7 +1,9 @@
 # Environment variables
 
 A `.env` file must exist in the root directory of the project to define the following environment-specific variables :
-- `OWM_APPID` : API key for OpenWeatherMap service.
+- `OWM_APPID` : API key for OpenWeatherMap service
+- `MQTT_HOST` : mqtt connexion hostname or IP
+- `MQTT_PORT` : mqtt connexion port
 
 # Development
 
