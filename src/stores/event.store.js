@@ -28,9 +28,7 @@ const fetchNextTalks = async () => {
     events = await getNextTalks();
     updateStore(false);
   } catch (error) {
-    runInAction(() => {
-      console.log(`Error retrieving next talks: ${error}`);
-    })
+    console.log(`Error retrieving next talks: ${error}`);
   }
 }
 
