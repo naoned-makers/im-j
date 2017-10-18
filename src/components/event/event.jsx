@@ -9,10 +9,10 @@ const Event = ({ store }) => store.event ? (
     <div className='pure-u-1 event-title-underline-3'></div>
     <div className='pure-u-1 event-border' style={{ marginTop: '-2.5rem' }}>
       <div className='pure-g event-detail-panel'>
-        <div className='pure-u-1'>
+        <div className='pure-u-1' style={{ height: '108px' }}>
           <div className='title' style={{ fontSize: '1.5rem' }}><i className='fa fa-caret-right' style={{ fontSize: '1.5rem', marginLeft: '-2.5rem', paddingRight: '2rem' }}></i>{store.event.title}</div>
         </div>
-        <p className='description pure-u-1'>{store.event.speakers}</p>
+        <p className='pure-u-1' style={{ height: '48px' }}>{store.event.speakers}</p>
       </div>
       <div className='pure-u-1'>
         <div className='pure-u-1-2 event-location'>#{store.event.track} #{store.event.format}</div>
