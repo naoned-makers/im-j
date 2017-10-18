@@ -1,4 +1,3 @@
-import { capitalize } from '../utils/string.utils';
 import { getAsyncMqttClient } from './mqtt.service';
 
 const client = getAsyncMqttClient(`twitter_${Math.random().toString(16).substr(2, 8)}`);
