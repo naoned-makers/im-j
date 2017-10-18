@@ -1,22 +1,30 @@
 import { observable } from 'mobx';
-import { client } from '../services/twitter.service';
+import { client } from '../services/event.service';
 import axios from 'axios';
+
+
+String.prototype.replaceAll = function(search, replacement) {
+  var target = this;
+  return target.replace(new RegExp(search, 'g'), replacement);
+};
 
 
 client.on('message', async (topic, payload) => {
   console.log("réception d'un message");
   try {
-    console.log(topic);
-    let response = JSON.parse(strPayLoad);
-    var instance = axios.create();
-    const confs = await instance.get('http://localhost:8080/talks?company=' + response.parameter.talkcompany);
-    eventStore.schedule = confs.data[0].date
-    eventStore.location = confs.data[0].room[0].name
-    eventStore.speakers = confs.data[0].speaker[0].name
-    eventStore.title = confs.data[0].title
-  } catch (e){
+    let uint8array = new TextEncoder("utf-8").encode("¢");
+    let response = JSON.parse(new TextDecoder("utf-8").decode(payload));
+
+    const confs = await axios.get('http://localhost:8082/talks?company=' + response.parameter.talkcompany.replaceAll('"', ''));
+    let resultat = confs.data;
+    eventStore.schedule = resultat.data[0].slot.startTime;
+    eventStore.location = resultat.data[0].track.title;
+    eventStore.speakers = resultat.data[0].speakers[0].name;
+    eventStore.title = resultat.data[0].title;
+    eventStore.track = resultat.data[0].category;
+    eventStore.format = resultat.data[0].type;
+   } catch (e){
     console.log(e.stack);
-    process.exit();
   }
 });
 
