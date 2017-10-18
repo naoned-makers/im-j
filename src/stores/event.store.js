@@ -23,7 +23,8 @@ client.on('message', async (topic, payload) => {
     eventStore.title = resultat.data[0].title;
     eventStore.track = resultat.data[0].category;
     eventStore.format = resultat.data[0].type;
-   } catch (e){
+  } catch (e){
+    console.log(e.message);
     console.log(e.stack);
   }
 });
