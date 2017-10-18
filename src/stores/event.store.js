@@ -1,9 +1,9 @@
 import { observable } from 'mobx';
-import { client } from '../services/event.service';
+import { client, getNextTalks } from '../services/event.service';
 import axios from 'axios';
 
 
-String.prototype.replaceAll = function(search, replacement) {
+String.prototype.replaceAll = function (search, replacement) {
   var target = this;
   return target.replace(new RegExp(search, 'g'), replacement);
 };
@@ -23,19 +23,52 @@ client.on('message', async (topic, payload) => {
     eventStore.title = resultat.data[0].title;
     eventStore.track = resultat.data[0].category;
     eventStore.format = resultat.data[0].type;
-  } catch (e){
+  } catch (e) {
     console.log(e.message);
     console.log(e.stack);
   }
 });
 
+let index = 0;
+let events;
+
+const updateStore = (isVocalRequest) => {
+  eventStore.event = {
+    title: events[index].title,
+    speakers: events[index].speakers.reduce((acc, current, index) => acc + `${index > 0 ? ' & ' : ''}${current.name} (${current.company ? current.company + ', ' : ''}${current.country})`, ''),
+    track: events[index].category,
+    format: events[index].type,
+    schedule: events[index].slot.startTime,
+    location: events[index].track.title
+  };
+  eventStore.isVocalRequest = isVocalRequest;
+}
+
+const fetchNextTalks = async () => {
+  try {
+    events = await getNextTalks();
+    updateStore(false);
+  } catch (error) {
+    runInAction(() => {
+      console.log(`Error retrieving next talks: ${error}`);
+    })
+  }
+}
+
+fetchNextTalks();
+
+setInterval(async () => {
+  fetchNextTalks()
+}, 60000);
+
 const eventStore = observable({
-  title: 'TensorFlow Wide & Deep: Advanced Classification the easy way',
-  speakers: 'Romain Guy (Google, USA) & Chet Haase (Google, USA) etlorem isum dolor',
-  track: 'Discovery',
-  format: 'Conference',
-  schedule: '14:30',
-  location: 'Salle de l\'Eléphant'
+  event: null,
+  isVocalRequest: false
 });
+
+setInterval(() => {
+  index = index === events.length - 1 ? 0 : index + 1;
+  updateStore(false);
+}, 5000);
 
 export default eventStore;
