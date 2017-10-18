@@ -26,7 +26,7 @@ async function message(topic, strPayLoad) {
       console.log(topic);
       let response = JSON.parse(strPayLoad);
       var instance = axios.create();
-      const confs = await instance.get('http://localhost:8080/confs?company=' + response.parameter.talkcompany);
+      const confs = await instance.get('http://localhost:8080/talks?company=' + response.parameter.talkcompany);
       eventStore.schedule = confs.data[0].date
       eventStore.location = confs.data[0].room[0].name
       eventStore.speakers = confs.data[0].speaker[0].name
