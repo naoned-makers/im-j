@@ -11,26 +11,33 @@ client.on('message', function (topic, payload) {
       setTimeout(() => figureStore.headMoving = false, 3000);
       break;
     case 'im/command/helmet':
+    case 'im/command/helmet/next':
       console.log('Visiere en mouvement !')
       figureStore.helmetMoving = true;
       setTimeout(() => figureStore.helmetMoving = false, 3000);
       break;
     case 'im/command/leftarm/move':
+    case 'im/command/leftarm/next':
       console.log('Bras gauche en mouvement !')
       figureStore.leftArmMoving = true;
       setTimeout(() => figureStore.leftArmMoving = false, 3000);
       break;
     case 'im/command/rightarm/move':
+    case 'im/command/rightarm/up':
+    case 'im/command/rightarm/down':
+    case 'im/command/rightarm/next':
       console.log('Bras droit en mouvement !')
       figureStore.rightArmMoving = true;
       setTimeout(() => figureStore.rightArmMoving = false, 3000);
       break;
     case 'im/command/lefthand/move':
+    case 'im/command/lefthand/next':
       console.log('Main gauche en mouvement !')
       figureStore.leftHandMoving = true;
       setTimeout(() => figureStore.leftHandMoving = false, 3000);
       break;
     case 'im/command/righthand/move':
+    case 'im/command/righthand/next':
       console.log('Main droite en mouvement !')
       figureStore.rightHandMoving = true;
       setTimeout(() => figureStore.rightHandMoving = false, 3000);
