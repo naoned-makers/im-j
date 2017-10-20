@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { getAsyncMqttClient } from './mqtt.service';
+import { getMqttClient } from './mqtt.service';
 
-const client = getAsyncMqttClient(`jarvis_${Math.random().toString(16).substr(2, 8)}`);
+const client = getMqttClient(`jarvis_${Math.random().toString(16).substr(2, 8)}`);
 
 client.on('connect', async () => {
   console.log("connexion au broker");
