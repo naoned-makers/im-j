@@ -54,22 +54,6 @@ client.on('message', async (topic, payload) => {
 
     const confs = await axios.get('http://localhost:8082/talks?company=' + response.parameter.talkcompany.replaceAll('"', ''));
     let resultat = confs.data;
-    console.log('***')
-    console.log(events.length)
-    events.map(event => console.log(event))
-    // console.log(events)
-    console.log(resultat.data[0])
-
-    // runInAction(() => {
-    //   events = [{
-    //     schedule: resultat.data[0].slot.startTime,
-    //     location: resultat.data[0].track.title,
-    //     speakers: resultat.data[0].speakers.reduce((acc, current, index) => acc + `${index > 0 ? ' & ' : ''}${current.name} (${current.company ? current.company + ', ' : ''}${current.country})`, ''),
-    //     title: resultat.data[0].title,
-    //     track: resultat.data[0].category,
-    //     format: resultat.data[0].type
-    //   }];
-    // })
 
     eventStore.event = {
       title: resultat.data[0].title,
@@ -108,11 +92,9 @@ client.on('message', async (topic, payload) => {
   }
 });
 
-
 const eventStore = observable({
   event: null,
   isVocalRequest: false
 });
-
 
 export default eventStore;
