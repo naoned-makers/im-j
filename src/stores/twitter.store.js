@@ -28,6 +28,14 @@ const twitterStore = observable([{
   screenName: '@grenaudin',
   text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
   timeSinceCreation: '17 m'
+}, {
+  screenName: '@grenaudin',
+  text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
+  timeSinceCreation: '17 m'
+}, {
+  screenName: '@grenaudin',
+  text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
+  timeSinceCreation: '17 m'
 }]);
 
 export default twitterStore;
