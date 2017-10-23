@@ -20,7 +20,6 @@ const App = () => (
     <div className='pure-u-1 pure-u-xl-8-24 layout-left'>
       <Clock store={clockStore} />
       <Weather store={weatherStore} />
-      <div className='layout-auto-fill'></div>
       <Kinect />
       <Performance store={performanceStore} />
     </div>
