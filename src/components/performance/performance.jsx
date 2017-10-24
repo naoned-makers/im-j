@@ -6,7 +6,7 @@ const Performance = ({ store }) => (
   <div className='container'>
     <span className='title-left-align'>Performances</span>
     <Gauge label='CPU' rate={store.cpuRate} />
-    <Gauge label='Load' rate={store.loadRate} />
+    <Gauge label='Messages' rate={store.messagesRate} />
     <Gauge label='Memory' rate={store.memoryRate} />
   </div>
 );
