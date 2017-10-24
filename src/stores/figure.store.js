@@ -2,52 +2,57 @@ import { observable } from 'mobx';
 import { client } from '../services/figure.service';
 
 const triggerFeedback = (action, duration) => {
-  action = true;
-  setTimeout(() => action = false, duration);
+  figureStore[action] = true;
+  setTimeout(() => figureStore[action] = false, duration);
 }
 
 client.on('message', function (topic, payload) {
   switch (topic) {
     case 'im/command/head':
-      triggerFeedback(figureStore.headMoving, 3000);
+      triggerFeedback('headMoving', 3000);
+      break;
+    case 'im/command/head/next':
+      triggerFeedback('headMoving', 1000);
       break;
     case 'im/command/head/facetrackmove':
-      triggerFeedback(figureStore.headMoving, 1000);
+      triggerFeedback('headMoving', 500);
       break;
     case 'im/command/helmet':
-      triggerFeedback(figureStore.helmetMoving, 3000);
+      triggerFeedback('helmetMoving', 3000);
       break;
     case 'im/command/helmet/next':
-      triggerFeedback(figureStore.helmetMoving, 1000);
+    case 'im/command/helmet/open':
+    case 'im/command/helmet/close':
+      triggerFeedback('helmetMoving', 1000);
       break;
     case 'im/command/leftarm/move':
-      triggerFeedback(figureStore.leftArmMoving, 3000);
+      triggerFeedback('leftArmMoving', 3000);
       break;
     case 'im/command/leftarm/next':
-      triggerFeedback(figureStore.leftArmMoving, 1000);
+      triggerFeedback('leftArmMoving', 1000);
       break;
     case 'im/command/rightarm/move':
     case 'im/command/rightarm/up':
     case 'im/command/rightarm/down':
-      triggerFeedback(figureStore.rightArmMoving, 3000);
+      triggerFeedback('rightArmMoving', 3000);
       break;
     case 'im/command/rightarm/next':
-      triggerFeedback(figureStore.rightArmMoving, 1000);
+      triggerFeedback('rightArmMoving', 1000);
       break;
     case 'im/command/lefthand/move':
-      triggerFeedback(figureStore.leftHandMoving, 3000);
+      triggerFeedback('leftHandMoving', 3000);
       break;
     case 'im/command/lefthand/next':
-      triggerFeedback(figureStore.leftHandMoving, 1000);
+      triggerFeedback('leftHandMoving', 1000);
       break;
     case 'im/command/righthand/move':
-      triggerFeedback(figureStore.rightHandMoving, 3000);
+      triggerFeedback('rightHandMoving', 3000);
       break;
     case 'im/command/righthand/next':
-      triggerFeedback(figureStore.rightHandMoving, 1000);
+      triggerFeedback('rightHandMoving', 1000);
       break;
     case 'im/command/energy/on':
-      triggerFeedback(figureStore.energyOn, 3000);
+      triggerFeedback('energyOn', 3000);
       break;
   }
 });
