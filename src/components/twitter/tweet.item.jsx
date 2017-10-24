@@ -10,7 +10,7 @@ const Tweet = ({ tweet }) => (
         <i className='fa fa-caret-right' style={{ fontSize: '1.5rem', marginLeft: '-2.5rem', paddingRight: '2rem' }}></i>
         {tweet.screenName}
       </div>
-      <div className='time-since-creation pure-u-1-5' style={{ textAlign: 'right' }}>{tweet.timeSinceCreation}</div>
+      <div className='pure-u-1-5' style={{ textAlign: 'right' }}>{tweet.creationTime}</div>
     </div>
     <p className='text pure-u-1' style={{ marginBottom: '0.5rem', height: '3.7rem' }}>{tweet.text}</p>
   </div>

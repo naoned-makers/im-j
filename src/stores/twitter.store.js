@@ -8,7 +8,7 @@ client.on('message', async (topic, payload) => {
     twitterStore.unshift({
       screenName: `@${response.screen_name}`,
       text: response.text,
-      timeSinceCreation: moment(response.created_at).locale('fr').format('LT'),
+      creationTime: moment(response.created_at).locale('fr').format('LT'),
       highlight: process.env.TWITTER_KEYWORD && response.text.toUpperCase().includes(process.env.TWITTER_KEYWORD.toUpperCase())
     });
     if (twitterStore.length > 5) {
@@ -24,24 +24,24 @@ if (!localStorage.getItem('im.tweets')) {
   localStorage.setItem('im.tweets', JSON.stringify([{
     screenName: '@SCxPro',
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    timeSinceCreation: '17 m'
+    creationTime: '17:12'
   }, {
     screenName: '@batiot',
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    timeSinceCreation: '17 m',
+    creationTime: '8:04',
     highlight: true
   }, {
     screenName: '@thedireizh',
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    timeSinceCreation: '17 m'
+    creationTime: '1:27'
   }, {
     screenName: '@grenaudin',
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    timeSinceCreation: '17 m'
+    creationTime: '7:10'
   }, {
     screenName: '@lynchmaniacPL',
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    timeSinceCreation: '17 m'
+    creationTime: '13:13'
   }]));
 }
 
