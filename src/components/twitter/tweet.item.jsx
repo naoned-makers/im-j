@@ -12,7 +12,7 @@ const Tweet = ({ tweet }) => (
       </div>
       <div className='pure-u-1-5' style={{ textAlign: 'right' }}>{tweet.creationTime}</div>
     </div>
-    <p className='text pure-u-1' style={{ marginBottom: '0.5rem', height: '3.7rem' }}>{tweet.text}</p>
+    <p className='text pure-u-1' style={{ marginBottom: '0.5rem', height: '3.7rem', overflow: 'hidden' }}>{tweet.text}</p>
   </div>
 );
 
