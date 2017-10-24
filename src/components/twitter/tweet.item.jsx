@@ -4,7 +4,7 @@ import { observable, autorun, computed, action } from 'mobx';
 import 'font-awesome/css/font-awesome.css';
 
 const Tweet = ({ tweet }) => (
-  <div style={{ padding: '0.8rem' }}>
+  <div style={{ padding: '0.8rem', opacity: tweet.highlight ? '1' : '0.5' }}>
     <div className='pure-u-1'>
       <div className=' pure-u-4-5' style={{ fontSize: '1.5rem' }}>
         <i className='fa fa-caret-right' style={{ fontSize: '1.5rem', marginLeft: '-2.5rem', paddingRight: '2rem' }}></i>
