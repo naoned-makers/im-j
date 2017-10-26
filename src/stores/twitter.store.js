@@ -8,7 +8,7 @@ client.on('message', async (topic, payload) => {
     twitterStore.unshift({
       screenName: `@${response.screen_name}`,
       text: response.text,
-      creationTime: moment(response.created_at).locale('fr').format('LT'),
+      creationTime: moment(response.created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY').locale('fr').format('LT'),
       highlight: process.env.TWITTER_KEYWORD && response.text.toUpperCase().includes(process.env.TWITTER_KEYWORD.toUpperCase())
     });
     if (twitterStore.length > 5) {
