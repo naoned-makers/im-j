@@ -6,7 +6,7 @@ A `.env` file must exist in the root directory of the project to define the foll
 - `MQTT_HOST` : mqtt connexion hostname or IP
 - `MQTT_PORT` : mqtt connexion port
 - `KINECT_MJPEG_STREAMER` : url of the mjpeg stream
-- `TWITTER_KEYWORD` : used to highlight tweets containing the defined keyword (optional)
+- `TWITTER_KEYWORDS` : used to highlight tweets containing the defined comma-separated list of keywords (optional)
 
 # Development
 
