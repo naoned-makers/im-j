@@ -1,6 +1,7 @@
 import { observable } from 'mobx';
 import { client } from '../services/twitter.service';
 import { find } from '../utils/string.utils';
+import { find as findInStorage, store } from '../utils/storage.utils';
 import moment from 'moment';
 
 client.on('message', async (topic, payload) => {
@@ -15,37 +16,12 @@ client.on('message', async (topic, payload) => {
     if (twitterStore.length > 5) {
       twitterStore.pop();
     }
-    localStorage.setItem('im.tweets', JSON.stringify(twitterStore));
+    store('jarvis.tweets', twitterStore);
   } catch (e) {
     process.exit();
   }
 });
 
-if (!localStorage.getItem('im.tweets')) {
-  localStorage.setItem('im.tweets', JSON.stringify([{
-    screenName: '@SCxPro',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    creationTime: '17:12'
-  }, {
-    screenName: '@batiot',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    creationTime: '8:04',
-    highlight: true
-  }, {
-    screenName: '@thedireizh',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    creationTime: '1:27'
-  }, {
-    screenName: '@grenaudin',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    creationTime: '7:10'
-  }, {
-    screenName: '@lynchmaniacPL',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum ab sapiente eaque cumque ut quibusdam corporis, recusandae saepe architecto',
-    creationTime: '13:13'
-  }]));
-}
-
-const twitterStore = observable(localStorage.getItem('im.tweets') ? JSON.parse(localStorage.getItem('im.tweets')) : []);
+const twitterStore = observable(findInStorage('jarvis.tweets', []));
 
 export default twitterStore;
