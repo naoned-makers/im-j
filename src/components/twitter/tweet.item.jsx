@@ -8,7 +8,7 @@ const Tweet = ({ tweet }) => (
     <div className='pure-u-1'>
       <div className=' pure-u-4-5' style={{ fontSize: '1.5rem' }}>
         <i className='fa fa-caret-right' style={{ fontSize: '1.5rem', marginLeft: '-2.5rem', paddingRight: '2rem' }}></i>
-        {tweet.screenName}
+        {`@${tweet.screenName}`}
       </div>
       <div className='pure-u-1-5' style={{ textAlign: 'right' }}>{tweet.creationTime}</div>
     </div>
