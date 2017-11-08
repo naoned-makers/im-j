@@ -1,3 +1,7 @@
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
-export { capitalize };
+const find = (text, keywords = []) => {
+  return keywords.find((keyword) => text.toUpperCase().includes(keyword.trim().toUpperCase()))
+};
+
+export { capitalize, find };

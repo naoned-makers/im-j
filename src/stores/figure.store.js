@@ -1,51 +1,58 @@
 import { observable } from 'mobx';
 import { client } from '../services/figure.service';
 
+const triggerFeedback = (action, duration) => {
+  figureStore[action] = true;
+  setTimeout(() => figureStore[action] = false, duration);
+}
+
 client.on('message', function (topic, payload) {
-  console.log(JSON.parse(payload))
   switch (topic) {
     case 'im/command/head':
+      triggerFeedback('headMoving', 3000);
+      break;
+    case 'im/command/head/next':
+      triggerFeedback('headMoving', 1000);
+      break;
     case 'im/command/head/facetrackmove':
-      console.log('Tete en mouvement !')
-      figureStore.headMoving = true;
-      setTimeout(() => figureStore.headMoving = false, 3000);
+      triggerFeedback('headMoving', 500);
       break;
     case 'im/command/helmet':
+      triggerFeedback('helmetMoving', 3000);
+      break;
     case 'im/command/helmet/next':
-      console.log('Visiere en mouvement !')
-      figureStore.helmetMoving = true;
-      setTimeout(() => figureStore.helmetMoving = false, 3000);
+    case 'im/command/helmet/open':
+    case 'im/command/helmet/close':
+      triggerFeedback('helmetMoving', 1000);
       break;
     case 'im/command/leftarm/move':
+      triggerFeedback('leftArmMoving', 3000);
+      break;
     case 'im/command/leftarm/next':
-      console.log('Bras gauche en mouvement !')
-      figureStore.leftArmMoving = true;
-      setTimeout(() => figureStore.leftArmMoving = false, 3000);
+      triggerFeedback('leftArmMoving', 1000);
       break;
     case 'im/command/rightarm/move':
     case 'im/command/rightarm/up':
     case 'im/command/rightarm/down':
+      triggerFeedback('rightArmMoving', 3000);
+      break;
     case 'im/command/rightarm/next':
-      console.log('Bras droit en mouvement !')
-      figureStore.rightArmMoving = true;
-      setTimeout(() => figureStore.rightArmMoving = false, 3000);
+      triggerFeedback('rightArmMoving', 1000);
       break;
     case 'im/command/lefthand/move':
+      triggerFeedback('leftHandMoving', 3000);
+      break;
     case 'im/command/lefthand/next':
-      console.log('Main gauche en mouvement !')
-      figureStore.leftHandMoving = true;
-      setTimeout(() => figureStore.leftHandMoving = false, 3000);
+      triggerFeedback('leftHandMoving', 1000);
       break;
     case 'im/command/righthand/move':
+      triggerFeedback('rightHandMoving', 3000);
+      break;
     case 'im/command/righthand/next':
-      console.log('Main droite en mouvement !')
-      figureStore.rightHandMoving = true;
-      setTimeout(() => figureStore.rightHandMoving = false, 3000);
+      triggerFeedback('rightHandMoving', 1000);
       break;
     case 'im/command/energy/on':
-      console.log('Energie activée !')
-      figureStore.energyOn = true;
-      setTimeout(() => figureStore.energyOn = false, 3000);
+      triggerFeedback('energyOn', 3000);
       break;
   }
 });

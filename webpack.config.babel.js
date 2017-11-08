@@ -81,7 +81,7 @@ const client = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Welcome to DevFest Nantes 2017',
+      title: 'Welcome to Chantebrique 2017',
       template: path.resolve(PATHS.app, 'index.html'),
       favicon: path.resolve(PATHS.app, 'favicon.ico'),
       minify: {
