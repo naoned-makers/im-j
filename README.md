@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/naoned-makers/jarvis-ui.svg?branch=develop)](https://travis-ci.org/naoned-makers/jarvis-ui)
+
 # Environment variables
 
 A `.env` file must exist in the root directory of the project to define the following environment-specific variables :
