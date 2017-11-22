@@ -19,34 +19,34 @@ const getConditionComponent = (conditionId) => {
     case '01n':
       return <ClearSkyNight />;
     case '02d':
-      return <FewCloudsDay />
+      return <FewCloudsDay />;
     case '02n':
-      return <FewCloudsNight />
+      return <FewCloudsNight />;
     case '03d':
     case '03n':
-      return <ScatteredClouds />
+      return <ScatteredClouds />;
     case '04d':
     case '04n':
-      return <BrokenClouds />
+      return <BrokenClouds />;
     case '09d':
     case '09n':
-      return <ShowerRain />
+      return <ShowerRain />;
     case '10d':
-      return <RainDay />
+      return <RainDay />;
     case '10n':
-      return <RainNight />
+      return <RainNight />;
     case '11d':
     case '11n':
-      return <Thunderstorm />
+      return <Thunderstorm />;
     case '13d':
     case '13n':
-      return <Snow />
+      return <Snow />;
     case '50d':
     case '50n':
-      return <Mist />
+      return <Mist />;
     default:
-      return null
+      return null;
   }
-}
+};
 
 export { getConditionComponent };
