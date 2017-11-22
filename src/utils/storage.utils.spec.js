@@ -6,8 +6,8 @@ describe('Store function', () => {
 
     const storedItem = localStorage.getItem('key');
     expect(storedItem).toBe('{"value":"value"}');
-    expect(JSON.parse(storedItem)).toEqual({ value: 'value' })
-  })
+    expect(JSON.parse(storedItem)).toEqual({ value: 'value' });
+  });
 });
 
 describe('Find function', () => {
@@ -19,7 +19,7 @@ describe('Find function', () => {
 
     storedItem = find('key', 'defaultValue');
     expect(storedItem).toEqual({ value: 'value' });
-  })
+  });
 
   test('returns default value from local storage', () => {
     let unknown = find('unknown');
@@ -27,5 +27,5 @@ describe('Find function', () => {
 
     unknown = find('unknown', 'defaultValue');
     expect(unknown).toBe('defaultValue');
-  })
+  });
 });

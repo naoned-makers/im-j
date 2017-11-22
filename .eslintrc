@@ -1,0 +1,15 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "localStorage": true,
+    "window": true,
+    "jest": true,
+    "describe": true,
+    "test": true,
+    "expect": true
+  },
+  "rules": {
+    "eol-last": 1,
+    "arrow-parens": 0
+  }
+}
