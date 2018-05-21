@@ -3,7 +3,6 @@ import path from 'path';
 import HtmlPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import BabelMinifyPlugin from 'babel-minify-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import cssnano from 'cssnano';
 import env from './config/env';
@@ -25,7 +24,7 @@ const client = {
   resolve: {
     extensions: ['.js', '.jsx', '.css', '*'],
   },
-  devtool: 'sourcemap',
+  devtool: 'source-map',
   performance: {
     hints: 'warning',
     maxEntrypointSize: 100000,
@@ -67,7 +66,6 @@ const client = {
     }),
     new webpack.DefinePlugin(env('production')),
     new ExtractTextPlugin('[name].[contenthash].css'),
-    new BabelMinifyPlugin(),
     new OptimizeCSSAssetsPlugin({
       cssProcessor: cssnano,
       cssProcessorOptions: {
