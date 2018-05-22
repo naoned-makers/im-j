@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { capitalize } from '../../utils/string.utils';
 
 class Clock extends Component {
 
   constructor(props) {
     super(props);
-    moment.locale('en');
-    this.state = this.formatDate(moment());
+    this.state = this.extractDate(new Date());
   }
 
-  formatDate = (m) => ({
-    hours: m.format('HH'),
-    minutes: m.format('mm'),
-    seconds: m.format('ss'),
-    dayName: capitalize(m.format('dddd')),
-    dayOfMonth: m.format('Do'),
-    monthName: capitalize(m.format('MMMM'))
+  extractDate = (date) => ({
+    hours: format(date, 'HH'),
+    minutes: format(date, 'mm'),
+    seconds: format(date, 'ss'),
+    dayName: capitalize(format(date, 'EEEE')),
+    dayOfMonth: format(date, 'do'),
+    monthName: capitalize(format(date, 'MMMM'))
   });
 
   componentWillMount = () => this.intervalID = setInterval(() => {
-    this.setState(this.formatDate(moment()));
+    this.setState(this.extractDate(new Date()));
   }, 1000);
 
   componentWillUnmount = () => clearInterval(this.intervalID);
