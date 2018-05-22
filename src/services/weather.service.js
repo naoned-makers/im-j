@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { format, differenceInMinutes, differenceInSeconds } from 'date-fns';
+import { differenceInMinutes } from 'date-fns';
 import { find as findInStorage, store } from '../utils/storage.utils';
 
 const getWeather = async () => {
