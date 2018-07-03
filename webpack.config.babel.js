@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import HtmlPlugin from 'html-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import cssnano from 'cssnano';
@@ -45,10 +45,7 @@ const client = {
       use: ['file-loader'],
     }, {
       test: /\.css$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: 'css-loader',
-      }),
+      use: [MiniCssExtractPlugin.loader, 'css-loader'],
     }],
   },
   plugins: [
@@ -65,7 +62,9 @@ const client = {
       },
     }),
     new webpack.DefinePlugin(env('production')),
-    new ExtractTextPlugin('[name].[contenthash].css'),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    }),
     new OptimizeCSSAssetsPlugin({
       cssProcessor: cssnano,
       cssProcessorOptions: {
@@ -76,10 +75,6 @@ const client = {
       },
       canPrint: false,
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: ({ resource }) => resource && resource.indexOf('node_modules') >= 0 && resource.match(/\.js$/),
-    }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       reportFilename: '../../reports/client/report.html',
@@ -88,6 +83,17 @@ const client = {
       openAnalyzer: false,
     }),
   ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: "commons",
+          chunks: "initial",
+          minChunks: 2
+        }
+      }
+    }
+  }
 };
 
 export default client;

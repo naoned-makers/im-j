@@ -26,6 +26,7 @@ export default {
     stats: 'errors-only',
     host: 'localhost',
     port: 3030,
+    overlay: true,
     proxy: {
       '/': {
         target: 'http://localhost:5000/',
