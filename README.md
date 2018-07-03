@@ -17,7 +17,7 @@ A `.env` file must exist in the root directory of the project to define the foll
 Launch application in development mode, including automatic refresh :
 
 ```sh
-npm start
+yarn start
 ```
 Access `http://localhost:3030/`.
 
@@ -26,6 +26,6 @@ Access `http://localhost:3030/`.
 Launch build task for production with the following command :
 
 ```sh
-npm run build
+yarn build
 ```
 Generated bundles are stored in the `/dist` directory.
