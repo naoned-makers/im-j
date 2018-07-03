@@ -4,7 +4,7 @@ import { find as findInStorage, store } from '../utils/storage.utils';
 
 const getWeather = async () => {
   try {
-    if (differenceInMinutes(new Date(), findInStorage('jarvis.weather', { age: new Date() }).age) > 10) {
+    if (differenceInMinutes(new Date(), findInStorage('jarvis.weather', { age: new Date(0) }).age) > 10) {
       const weather = await axios.get(`http://api.openweathermap.org/data/2.5/weather?id=${process.env.OWM_CITYID}&appid=${process.env.OWM_APPID}&units=metric&lang=fr`);
       store('jarvis.weather', {
         age: new Date(),
