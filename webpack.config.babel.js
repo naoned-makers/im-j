@@ -50,7 +50,6 @@ const client = {
   },
   plugins: [
     new HtmlPlugin({
-      title: 'Welcome to Chantebrique 2017',
       template: path.resolve(PATHS.app, 'index.html'),
       favicon: path.resolve(PATHS.app, 'favicon.ico'),
       minify: {
