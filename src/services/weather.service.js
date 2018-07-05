@@ -1,13 +1,13 @@
 import axios from 'axios';
-import moment from 'moment';
+import { differenceInMinutes } from 'date-fns';
 import { find as findInStorage, store } from '../utils/storage.utils';
 
 const getWeather = async () => {
   try {
-    if (moment().diff(moment(Number.parseInt(findInStorage('jarvis.weather', { age: 11 }).age, 10)), 'minutes') > 10) {
+    if (differenceInMinutes(new Date(), findInStorage('jarvis.weather', { age: new Date(0) }).age) > 10) {
       const weather = await axios.get(`http://api.openweathermap.org/data/2.5/weather?id=${process.env.OWM_CITYID}&appid=${process.env.OWM_APPID}&units=metric&lang=fr`);
       store('jarvis.weather', {
-        age: moment().format('x'),
+        age: new Date(),
         data: weather.data
       })
     }

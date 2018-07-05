@@ -7,7 +7,6 @@ import { Weather } from './weather';
 import { Kinect } from './kinect';
 import { observer } from 'mobx-react';
 import performanceStore from '../stores/performance.store';
-import clockStore from '../stores/clock.store';
 import weatherStore from '../stores/weather.store';
 import figureStore from '../stores/figure.store';
 import twitterStore from '../stores/twitter.store';
@@ -16,7 +15,7 @@ import './app.css';
 const App = () => (
   <div className='pure-g'>
     <div className='pure-u-1 pure-u-xl-8-24 layout-left'>
-      <Clock store={clockStore} />
+      <Clock />
       <Weather store={weatherStore} />
       <Kinect />
       <Performance store={performanceStore} />
