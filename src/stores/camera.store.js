@@ -7,7 +7,6 @@ client.on('message', (topic, payload) => {
   switch (topic) {
     case 'im/command/head/facetrackstart':
       cameraStore.img = data.face;
-      //console.log(data.face)
     default:
       break;
   }
