@@ -14,5 +14,5 @@ describe('Camera frame', () => {
     ).toJSON();
 
     expect(component.type).toBe('img');
-  })
+  });
 });

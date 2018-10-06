@@ -4,14 +4,13 @@ import { Clock } from './clock';
 import { TweetList } from './twitter';
 import { Body } from './figure';
 import { Weather } from './weather';
-//import { Kinect } from './kinect';
-import { Camera } from "./camera"
+import { Camera } from './camera';
 import { observer } from 'mobx-react';
 import performanceStore from '../stores/performance.store';
 import weatherStore from '../stores/weather.store';
 import figureStore from '../stores/figure.store';
 import twitterStore from '../stores/twitter.store';
-import cameraStore from "../stores/camera.store"
+import cameraStore from '../stores/camera.store';
 import './app.css';
 
 const App = () => (
