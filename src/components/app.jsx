@@ -18,7 +18,6 @@ const App = () => (
     <div className='pure-u-1 pure-u-xl-8-24 layout-left'>
       <Clock />
       <Weather store={weatherStore} />
-  { /* <Kinect/> */ }
       <Camera store={cameraStore} />
       <Performance store={performanceStore} />
     </div>
